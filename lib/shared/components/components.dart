@@ -112,6 +112,8 @@ Widget defaultTextResult({
 Widget bmiResult(context, cubit, result) {
   return Scaffold(
     appBar: AppBar(
+      brightness: Brightness.dark,
+      elevation: 0.0,
       leading: IconButton(
         onPressed: () {
           Navigator.pop(context);
