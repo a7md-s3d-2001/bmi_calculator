@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 Widget selectGender({
   @required Function onTap,
@@ -109,96 +108,52 @@ Widget defaultTextResult({
   );
 }
 
-Widget bmiResult(context, cubit, result) {
-  return Scaffold(
-    appBar: AppBar(
-      brightness: Brightness.dark,
-      elevation: 0.0,
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Icon(Icons.keyboard_arrow_left),
-      ),
-      title: Text('BMI Result'),
+Widget defaultTextTitleInfo (String title) {
+  return Text(
+    title,
+    style: TextStyle(
+      color: Colors.blue,
+      fontWeight: FontWeight.bold,
+      fontSize: 18.0,
     ),
-    body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  defaultTextResult(
-                    title: 'Gender : ${cubit.gender ? 'Male' : 'Female'}',
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  defaultTextResult(
-                    title: 'Age : ${cubit.age}',
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  defaultTextResult(
-                    title: 'Height : ${cubit.height.round()}',
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  defaultTextResult(
-                    title: 'Weight : ${cubit.weight.round()}',
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'Result : ${result.round()}',
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 0.5,
-                      color: Colors.blue[900],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 30.0,
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: MaterialButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              height: 50,
-              child: Text(
-                'Try Again',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0,
-                  letterSpacing: 1,
-                ),
-              ),
-            ),
-          ),
-        ],
+  );
+}
+
+Widget defaultTextDetailsInfo (String title){
+  return Text(
+    title,
+    style: TextStyle(
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      color: Colors.grey,
+    ),
+  );
+}
+
+Widget defaultButton ({
+  @required Function onPressed,
+  @required String title,
+}) {
+  return Container(
+    width: double.infinity,
+    decoration: BoxDecoration(
+      color: Colors.blue,
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(20.0),
+        topRight: Radius.circular(20.0),
+      ),
+    ),
+    child: MaterialButton(
+      onPressed: onPressed,
+      height: 50.0,
+      child: Text(
+        title,
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 3,
+          fontSize: 25.0,
+        ),
       ),
     ),
   );

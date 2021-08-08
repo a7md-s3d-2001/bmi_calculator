@@ -27,6 +27,7 @@ class BmiCubit extends Cubit <BmiState> {
   }
 
   int weight = 50;
+  double result = 0.0;
   void changeWeightValue ({@required var value}) {
     weight = weight + value;
     emit(AppChangeWeightValueState());
